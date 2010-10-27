@@ -1,0 +1,59 @@
+generator:
+  class: dmAdminDoctrineGenerator
+  param:
+    model_class: DmNewsLetter
+    theme: dmAdmin
+    non_verbose_templates: true
+    with_show: false
+    route_prefix: dm_news_letter
+    with_doctrine_route: false
+    config:
+      actions: ~
+      fields: { }
+      list:
+        display:
+          - '=subject'
+          - sent_at
+          - categories_list
+          - articles_list
+          - created_at
+          - updated_at
+        sort:
+          - subject
+          - asc
+        table_method: getAdminListQuery
+        table_count_method: ~
+        sortable: false
+        batch_actions:
+          _delete: ~
+          send:   ~
+        object_actions:
+          send:   ~
+        loremize: false
+      filter:
+        display:
+          - subject
+          - is_sent
+          - sent_at
+          - categories_list
+          - articles_list
+          - created_at
+          - updated_at
+      form:
+        display:
+          NONE: [subject]
+          Content: [categories_list, articles_list]
+        class: DmNewsLetterAdminForm
+        fields: {  }
+      edit: 
+        actions:
+          _list:          { label: 'Back to list' }
+          _save:          { label: 'Save' }
+          _save_and_add:  { label: 'Save and Add' }
+          _save_and_list: { label: 'Save and Back to list' }
+          _save_and_next: { label: 'Save and Next' }
+          _delete:        { label: 'Delete', title: 'Delete this %1%' }
+          _add:           { label: 'Add', title: 'Add a %1%' }
+          _view_page:     { label: 'Show', title: 'View page on website' }
+          send:           { label: 'Send', title: 'Send this %1%' }
+      new: ~

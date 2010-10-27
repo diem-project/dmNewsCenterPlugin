@@ -1,0 +1,116 @@
+DmNewsArticle:
+  actAs:
+    I18n:
+      fields:             [ title, summary, body, is_active ]
+      actAs:
+        Timestampable:
+        DmTaggable:
+  columns:
+    title:                { type: string(120), notnull: true }
+    summary:              { type: string(2000), notnull: true }
+    body:                 { type: clob, extra: markdown }
+    image:                { type: integer }
+    author:               { type: integer, notnull: true }
+    newsletter:           { type: integer }
+    is_active:            { type: boolean, notnull: true, default: false }
+  relations:
+    Image:
+      class:              DmMedia
+      local:              image
+      foreignAlias:       NewsArticles
+    Author:
+      class:              DmUser
+      local:              author
+      foreignAlias:       NewsArticles
+    Newsletters:
+      class:              DmNewsLetter
+      refClass:           DmNewsLetterArticle
+      local:              article
+      foreign:            newsletter
+      type:               many
+      foreignType:        many
+      foreignAlias:       Articles
+    Categories:
+      class:              DmNewsCategory
+      refClass:           DmNewsCategoryArticle
+      local:              article
+      foreign:            category
+      type:               many
+      foreignType:        many
+      foreignAlias:       Articles
+
+DmNewsLetter:
+  actAs:
+    I18n:
+      fields:             [ subject ]
+      actAs:
+        Timestampable:
+        DmTaggable:
+  columns:
+    subject:              { type: string(120), notnull: true }
+    sent_at:              { type: timestamp }
+  relations:
+    Categories:
+      class:              DmNewsCategory
+      refClass:           DmNewsLetterCategory
+      local:              newsletter
+      foreign:            category
+      type:               many
+      foreignType:        many
+      foreignAlias:       NewsLetters
+
+DmNewsLetterArticle:
+  columns:
+    newsletter:           { type: integer, primary: true }
+    article:              { type: integer, primary: true }
+
+DmNewsSubscriber:
+  actAs:
+    Timestampable:
+  columns:
+    firstname:            { type: string(120), notnull: true }
+    lastname:             { type: string(120), notnull: true }
+    email:                { type: string(255), notnull: true, unique: true }
+    confirmed:            { type: boolean, notnull: true, default: false }
+  relations:
+    Categories:
+      class:              DmNewsCategory
+      refClass:           DmNewsSubscriberCategory
+      local:              subscriber
+      foreign:            category
+      type:               many
+      foreignType:        many
+      foreignAlias:       Subscribers
+
+DmNewsCategory:
+  actAs:
+    NestedSet:
+      hasManyRoots:       true
+    I18n:
+      fields:             [ title, is_active ]
+      actAs:
+        Timestampable:
+  columns:
+    title:                { type: string(255), notnull: true }
+    is_active:            { type: boolean, notnull: true, default: false }
+    is_registrable:       { type: boolean, notnull: true, default: false }
+
+DmNewsSubscriberCategory:
+  columns:
+    subscriber:           { type: integer, primary: true }
+    category:             { type: integer, primary: true }
+  relations:
+    Subscriber:
+      class: DmNewsSubscriber
+      local: subscriber
+      foreign: id
+
+DmNewsCategoryArticle:
+  columns:
+    category:             { type: integer, primary: true }
+    article:              { type: integer, primary: true }
+
+DmNewsLetterCategory:
+  columns:
+    newsletter:           { type: integer, primary: true }
+    category:             { type: integer, primary: true }

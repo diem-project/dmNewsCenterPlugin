@@ -1,0 +1,3 @@
+news_feed:
+  url:            /news/feed
+  params:         { module: dmNewsArticle, action: feed }

@@ -1,0 +1,44 @@
+generator:
+  class: dmAdminDoctrineGenerator
+  param:
+    model_class: DmNewsSubscriber
+    theme: dmAdmin
+    non_verbose_templates: true
+    with_show: false
+    route_prefix: dm_news_subscriber
+    with_doctrine_route: false
+    config:
+      actions: ~
+      fields: {  }
+      list:
+        display:
+          - =lastname
+          - firstname
+          - email
+          - confirmed
+          - categories_list
+          - created_at
+          - updated_at
+        sort:
+          - id
+          - asc
+        table_method: getAdminListQuery
+        table_count_method: ~
+        sortable: false
+      filter:
+        display:
+          - firstname
+          - lastname
+          - email
+          - confirmed
+          - categories_list
+          - created_at
+          - updated_at
+      form:
+        display:
+          NONE: [firstname, lastname, email, confirmed]
+          Categories: [categories_list]
+        class: DmNewsSubscriberAdminForm
+        fields: {  }
+      edit: ~
+      new: ~

@@ -1,0 +1,52 @@
+generator:
+  class: dmAdminDoctrineGenerator
+  param:
+    model_class: DmNewsArticle
+    theme: dmAdmin
+    non_verbose_templates: true
+    with_show: false
+    route_prefix: dm_news_article
+    with_doctrine_route: false
+    config:
+      actions: ~
+      fields: {  }
+      list:
+        display:
+          - '=title'
+          - image
+          - author
+          - summary
+          - body
+          - is_active
+          - newsletters_list
+          - categories_list
+          - created_at
+          - updated_at
+        sort:
+          - position
+          - asc
+        table_method: getAdminListQuery
+        table_count_method: ~
+        sortable: true
+      filter:
+        display:
+          - title
+          - image
+          - author
+          - summary
+          - body
+          - is_active
+          - newsletters_list
+          - categories_list
+          - created_at
+          - updated_at
+      form:
+        display:
+          NONE: [title, is_active, author, categories_list]
+          Summary: [summary, newsletters_list]
+          Image: [image_form, image_view]
+          Body: [body]
+        class: DmNewsArticleAdminForm
+        fields: {  }
+      edit: ~
+      new: ~

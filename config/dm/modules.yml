@@ -1,0 +1,23 @@
+Content:
+
+  News:
+    DmNewsArticle:
+      name:         News
+      page:         true
+      components:
+        list:
+        listSide:
+        show:
+
+    DmNewsLetter:
+      name:         Newsletter
+
+    DmNewsSubscriber:
+      name:         Subscriber
+      components:
+        form:       { name: "Subscription" }
+
+    DmNewsCategory:
+      name:         Category|Categories
+      admin: true
+

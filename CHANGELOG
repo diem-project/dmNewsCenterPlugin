@@ -1,0 +1,13 @@
+== Changelog version 0.2 ==
+Release date: 2010-10-22
+
+* Added "read more" link/url to articles/content
+* Mail template now offers HTML and Text version
+* Versioning and usage of Changelog started
+* Updated README.markdown
+
+
+== Changelog version 0.1 ==
+Release date: 2010-10-10
+
+* Initial release
