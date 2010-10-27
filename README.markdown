@@ -17,6 +17,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ## TODOS
 - Article archive
+- Update form widget / lister widget
 
 ## Templates
 There are 2 mail templates used in this plugin:
