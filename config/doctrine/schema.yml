@@ -53,8 +53,8 @@ DmNewsLetter:
 
 DmNewsLetterArticle:
   columns:
-    newsletter:           { type: integer, primary: true }
-    article:              { type: integer, primary: true }
+    newsletter_id:           { type: integer, primary: true }
+    article_id:              { type: integer, primary: true }
 
 DmNewsSubscriber:
   actAs:
