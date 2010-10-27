@@ -1,10 +1,11 @@
 DmNewsArticle:
   actAs:
+    DmGallery:
     I18n:
       fields:             [ title, summary, body, is_active ]
       actAs:
         Timestampable:
-        DmTaggable:
+        DmBlameable:
   columns:
     title:                { type: string(120), notnull: true }
     summary:              { type: string(2000), notnull: true }
@@ -14,27 +15,19 @@ DmNewsArticle:
     newsletter:           { type: integer }
     is_active:            { type: boolean, notnull: true, default: false }
   relations:
-    Image:
-      class:              DmMedia
-      local:              image
-      foreignAlias:       NewsArticles
-    Author:
-      class:              DmUser
-      local:              author
-      foreignAlias:       NewsArticles
     Newsletters:
       class:              DmNewsLetter
       refClass:           DmNewsLetterArticle
-      local:              article
-      foreign:            newsletter
+      local:              article_id
+      foreign:            newsletter_id
       type:               many
       foreignType:        many
       foreignAlias:       Articles
     Categories:
       class:              DmNewsCategory
       refClass:           DmNewsCategoryArticle
-      local:              article
-      foreign:            category
+      local:              article_id
+      foreign:            category_id
       type:               many
       foreignType:        many
       foreignAlias:       Articles
@@ -45,7 +38,6 @@ DmNewsLetter:
       fields:             [ subject ]
       actAs:
         Timestampable:
-        DmTaggable:
   columns:
     subject:              { type: string(120), notnull: true }
     sent_at:              { type: timestamp }
@@ -53,8 +45,8 @@ DmNewsLetter:
     Categories:
       class:              DmNewsCategory
       refClass:           DmNewsLetterCategory
-      local:              newsletter
-      foreign:            category
+      local:              newsletter_id
+      foreign:            category_id
       type:               many
       foreignType:        many
       foreignAlias:       NewsLetters
@@ -68,24 +60,23 @@ DmNewsSubscriber:
   actAs:
     Timestampable:
   columns:
-    firstname:            { type: string(120), notnull: true }
-    lastname:             { type: string(120), notnull: true }
+    first_name:           { type: string(120), notnull: true }
+    last_name:            { type: string(120), notnull: true }
     email:                { type: string(255), notnull: true, unique: true }
-    confirmed:            { type: boolean, notnull: true, default: false }
+    is_confirmed:         { type: boolean, notnull: true, default: false }
   relations:
     Categories:
       class:              DmNewsCategory
       refClass:           DmNewsSubscriberCategory
-      local:              subscriber
-      foreign:            category
+      local:              subscriber_id
+      foreign:            category_id
       type:               many
       foreignType:        many
       foreignAlias:       Subscribers
 
 DmNewsCategory:
   actAs:
-    NestedSet:
-      hasManyRoots:       true
+    DmSortable:
     I18n:
       fields:             [ title, is_active ]
       actAs:
@@ -97,20 +88,20 @@ DmNewsCategory:
 
 DmNewsSubscriberCategory:
   columns:
-    subscriber:           { type: integer, primary: true }
-    category:             { type: integer, primary: true }
+    subscriber_id:        { type: integer, primary: true }
+    category_id:          { type: integer, primary: true }
   relations:
     Subscriber:
       class: DmNewsSubscriber
-      local: subscriber
+      local: subscriber_id
       foreign: id
 
 DmNewsCategoryArticle:
   columns:
-    category:             { type: integer, primary: true }
-    article:              { type: integer, primary: true }
+    category_id:          { type: integer, primary: true }
+    article_id:           { type: integer, primary: true }
 
 DmNewsLetterCategory:
   columns:
-    newsletter:           { type: integer, primary: true }
-    category:             { type: integer, primary: true }
+    newsletter_id:        { type: integer, primary: true }
+    category_id:          { type: integer, primary: true }

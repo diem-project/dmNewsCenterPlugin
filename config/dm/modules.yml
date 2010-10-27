@@ -6,7 +6,9 @@ Content:
       page:         true
       components:
         list:
+          filters: [DmNewsCategory]
         listSide:
+          filters: [DmNewsCategory]
         show:
 
     DmNewsLetter:

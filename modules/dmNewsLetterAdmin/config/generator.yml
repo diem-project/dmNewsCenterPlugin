@@ -33,7 +33,6 @@ generator:
       filter:
         display:
           - subject
-          - is_sent
           - sent_at
           - categories_list
           - articles_list
@@ -54,6 +53,6 @@ generator:
           _save_and_next: { label: 'Save and Next' }
           _delete:        { label: 'Delete', title: 'Delete this %1%' }
           _add:           { label: 'Add', title: 'Add a %1%' }
-          _view_page:     { label: 'Show', title: 'View page on website' }
+          _view_page:     { label: 'Show', title: 'View this %1% on website' }
           send:           { label: 'Send', title: 'Send this %1%' }
       new: ~

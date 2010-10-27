@@ -111,7 +111,7 @@ class dmNewsLetterAdminActions extends autoDmNewsLetterAdminActions {
             $nl = "<br />";
             $sep = '<hr />';
             $title = '<p><h2>' . $article->title . '</h2>' . $nl;
-            $content = $article->summary . $nl . $nl;
+            $content = nl2br($article->summary) . $nl . $nl;
             $articleUrl = dm::getHelper()->link($page)->text($this->getI18n()->__('Read more')) . '</p>' . $sep . $nl;
         } else {
             $nl = "\r\n";
