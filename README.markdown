@@ -14,6 +14,11 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+## Differences with lrNewsPlugin
+- Article and Newsletter is many-to-many related
+- Category and Newsletter is many-to-many related
+- Subscriber and Newsletter is many-to-many related
+- Article has DmBlameable behaviour
 
 ## TODOS
 - Article archive
@@ -52,7 +57,9 @@ There are 4 widgets you can use in frontend:
 
 
 ## Configuration
+
 You can set in app.yml the following variables under news:
+
 - maxFeedItems => How many items should be shown in the feed (default: 20)
 - feedAuthor => Author that should be used for the whole feed (default: dmNewsLetterPlugin)
 - showAuthor => Should the Author be shown on articles (default: false)
@@ -62,8 +69,8 @@ You can set in app.yml the following variables under news:
 ## Feed
 You can get the feed by calling i.e. http://yoursite.com/index.php/news/feed
 By default the feed is cached. If you don't want it to be cached (not recommended) put inside your app's cache.yml:
-> feed:
->   cache: false
+> feed: 
+>   cache: false 
 
 ## Usage
 First you have to create a new newsletter and set a subject. You should use a name other than just 'Newsletter' so that you know inside of an article which newsletter your are choosing. So a better name would be 'Newsletter from 01.01.2010'.
