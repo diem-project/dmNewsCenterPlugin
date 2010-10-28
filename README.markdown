@@ -1,4 +1,4 @@
-dmNewsLetterPlugin is a news management system for Diem CMF/CMS
+dmNewsCenterPlugin is a news management system for Diem CMF/CMS
 Copyright (C) 2010 4levels / Thomas Ohms <http://www.lokarabia.de>
 
 This program is free software: you can redistribute it and/or modify
@@ -63,7 +63,7 @@ There are 4 widgets you can use in frontend:
 You can set in app.yml the following variables under news:
 
 - maxFeedItems => How many items should be shown in the feed (default: 20)
-- feedAuthor => Author that should be used for the whole feed (default: dmNewsLetterPlugin)
+- feedAuthor => Author that should be used for the whole feed (default: dmNewsCenterPlugin)
 - showAuthor => Should the Author be shown on articles (default: false)
 - wait4ConfirmationHours => Hours to wait until a new subscription has to be confirmed (default: 48)
 

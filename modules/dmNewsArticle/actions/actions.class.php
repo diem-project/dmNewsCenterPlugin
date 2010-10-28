@@ -5,20 +5,20 @@
  *
  * Copyright (c) 2010 Thomas Ohms <http://www.lokarabia.de>.
  *
- * This file is part of dmNewsLetterPlugin.
+ * This file is part of dmNewsCenterPlugin.
  *
- * dmNewsLetterPlugin is free software: you can redistribute it and/or modify
+ * dmNewsCenterPlugin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * dmNewsLetterPlugin is distributed in the hope that it will be useful,
+ * dmNewsCenterPlugin is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with dmNewsLetterPlugin.  If not, see <http ://www.gnu.org/licenses/>.
+ * along with dmNewsCenterPlugin.  If not, see <http ://www.gnu.org/licenses/>.
  */
 
 /**
@@ -31,12 +31,12 @@ class dmNewsArticleActions extends myFrontModuleActions
                 ->withI18n()
                 ->where('aTranslation.is_active = ?', true)
                 ->orderBy('aTranslation.created_at DESC')
-                ->limit(sfConfig::get('app_dmNewsLetterPlugin_maxFeedItems'))
+                ->limit(sfConfig::get('app_dmNewsCenterPlugin_maxFeedItems'))
                 ->execute();
 
         $this->feed = new sfRssFeed();
 
-        $this->feed->setAuthorName(sfConfig::get('app_dmNewsLetterPlugin_feedAuthor'));
+        $this->feed->setAuthorName(sfConfig::get('app_dmNewsCenterPlugin_feedAuthor'));
 
         $articleUrl = $this->getHelper()->link('dmNewsArticle/list')->getAbsoluteHref();
 
@@ -48,7 +48,7 @@ class dmNewsArticleActions extends myFrontModuleActions
             $item->setTitle($article->title);
             $item->setLink($this->getHelper()->link($article)->getAbsoluteHref());
 
-            if (sfConfig::get('app_dmNewsLetterPlugin_showAuthor')) {
+            if (sfConfig::get('app_dmNewsCenterPlugin_showAuthor')) {
                 $item->setAuthorName($article->Author);
             }
 

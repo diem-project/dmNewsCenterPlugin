@@ -1,6 +1,6 @@
 all:
-  dmNewsLettrePlugin:
+  dmNewsCenterPlugin:
     showAuthor:             false
     maxFeedItems:           20
-    feedAuthor:             dmNewsLetterPlugin
+    feedAuthor:             dmNewsCenterPlugin
     wait4ConfirmationHours: 48

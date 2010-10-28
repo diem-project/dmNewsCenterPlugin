@@ -12,7 +12,7 @@ class dmNewsSubscriberActions extends dmFrontBaseActions
         if ($subscribers->count() > 0) {
             foreach ($subscribers->getData() as $subscriber) {
                 $currentTime = time();
-                $limit = sfConfig::get('app_dmNewsLetterPlugin_wait4ConfirmationHours') * 60 * 60;
+                $limit = sfConfig::get('app_dmNewsCenterPlugin_wait4ConfirmationHours') * 60 * 60;
                 $registered = strtotime($subscriber['updated_at']);
                 
                 if (($currentTime - $registered) >= $limit) {
@@ -111,7 +111,7 @@ class dmNewsSubscriberActions extends dmFrontBaseActions
                   'last_name'    => $last_name,
                   'email'       => $email,
                   'confirm_parameter' => $confirm,
-                  'confirm_limit'=> sfConfig::get('app_dmNewsLetterPlugin_wait4ConfirmationHours')
+                  'confirm_limit'=> sfConfig::get('app_dmNewsCenterPlugin_wait4ConfirmationHours')
               ))
               ->send();
   }

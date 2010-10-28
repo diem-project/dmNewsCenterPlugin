@@ -3,7 +3,7 @@
 use_helper('Date');
 
 $author = null;
-if (sfConfig::get('app_dmNewsLetterPlugin_showAuthor')) {
+if (sfConfig::get('app_dmNewsCenterPlugin_showAuthor')) {
     $author =  _tag('span', ' | ' . $dmNewsArticle->Author);
 }
 

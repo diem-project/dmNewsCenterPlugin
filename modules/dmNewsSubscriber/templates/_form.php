@@ -20,7 +20,7 @@ if ($sf_user->getFlash('subscription_form_valid')) {
     if ($sf_user->getFlash('confirm_mail_invalid')) {
         echo _tag('p.error',
                 __('Could not find your mail address. Maybe you have reached the limit of %1% hour(s) to confirm and you have to register again.',
-                        array('%1%' => sfConfig::get('app_dmNewsLetterPlugin_wait4ConfirmationHours'))
+                        array('%1%' => sfConfig::get('app_dmNewsCenterPlugin_wait4ConfirmationHours'))
                 )
         );
     }
