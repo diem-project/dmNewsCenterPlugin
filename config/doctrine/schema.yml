@@ -10,9 +10,6 @@ DmNewsArticle:
     title:                { type: string(120), notnull: true }
     summary:              { type: string(2000), notnull: true }
     body:                 { type: clob, extra: markdown }
-    image:                { type: integer }
-    author:               { type: integer, notnull: true }
-    newsletter:           { type: integer }
     is_active:            { type: boolean, notnull: true, default: false }
   relations:
     Newsletters:

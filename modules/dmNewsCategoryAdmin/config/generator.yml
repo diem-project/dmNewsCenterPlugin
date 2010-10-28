@@ -15,8 +15,6 @@ generator:
       list:
         display:
           - '=title'
-          - nested_set_indented_name
-          - nested_set_parent
           - articles_list
           - subscribers_list
           - news_letters_list
@@ -40,10 +38,9 @@ generator:
           - updated_at
       form:
         display:
-          NONE: [title, is_active, nested_set_parent_id]
+          NONE: [title, is_active, position]
           Subscribers: [subscribers_list]
-          Articles: [articles_list]
-          Newsletter: [news_letters_list]
+          Publication: [articles_list, news_letters_list]
         class: DmNewsCategoryAdminForm
         fields: {  }
       edit: ~
