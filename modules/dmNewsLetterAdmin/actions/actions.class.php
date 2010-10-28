@@ -67,28 +67,28 @@ class dmNewsLetterAdminActions extends autoDmNewsLetterAdminActions {
           }
         }
 
-        $mail = $this->getService('mail')->setTemplate('newsletter');
-        $recipients = array();
 
         foreach ($subscribers as $subscriber) {
-            $mail->addValues(array(
-                'firstname' => $subscriber->Subscriber->firstname,
-                'lastname' => $subscriber->Subscriber->lastname,
-                'email' => $subscriber->Subscriber->email,
-                'content_text' => $contentText,
-                'content_html' => $contentHtml,
-                'unsubscribe_parameter' => '?remove=' . $subscriber->subscriber,
-                'edit_parameter' => '?edit=' . $subscriber->subscriber
-            ));
+          $mail = $this->getService('mail')->setTemplate('newsletter');
 
-            $recipients[$subscriber->Subscriber->email] = $subscriber->Subscriber->firstname . " " . $subscriber->Subscriber->lastname;
+          $mail->addValues(array(
+              'first_name' => $subscriber->Subscriber->first_name,
+              'last_name' => $subscriber->Subscriber->last_name,
+              'email' => $subscriber->Subscriber->email,
+              'content_text' => $contentText,
+              'content_html' => $contentHtml,
+              'unsubscribe_parameter' => '?remove=' . $subscriber->subscriber,
+              'edit_parameter' => '?edit=' . $subscriber->subscriber
+          ));
+
+          $mail = $mail->render();
+          $mail->getMessage()->setTo(array($subscriber->Subscriber->email => trim($subscriber->Subscriber->first_name.' '.$subscriber->Subscriber->last_name)));
+          $mail->getMessage()->setSubject($newsletter->subject);
+
+          $mail->send();
+
         }
 
-        $mail = $mail->render();
-        $mail->getMessage()->setTo($recipients);
-        $mail->getMessage()->setSubject($newsletter->subject);
-
-        $mail->send();
 
         $newsletter->set('sent_at', date("Y-m-d H:i"));
         $newsletter->save();

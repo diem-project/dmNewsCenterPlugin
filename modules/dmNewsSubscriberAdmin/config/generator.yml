@@ -12,8 +12,8 @@ generator:
       fields: {  }
       list:
         display:
-          - =lastname
-          - firstname
+          - =last_name
+          - first_name
           - email
           - confirmed
           - categories_list
@@ -27,8 +27,8 @@ generator:
         sortable: false
       filter:
         display:
-          - firstname
-          - lastname
+          - first_name
+          - last_name
           - email
           - confirmed
           - categories_list
@@ -36,7 +36,7 @@ generator:
           - updated_at
       form:
         display:
-          NONE: [firstname, lastname, email, confirmed]
+          NONE: [first_name, last_name, email, confirmed]
           Categories: [categories_list]
         class: DmNewsSubscriberAdminForm
         fields: {  }

@@ -49,8 +49,8 @@ class dmNewsSubscriberActions extends dmFrontBaseActions
       $subscriber = $form->save();
 
       $this->sendConfirmation(
-              $subscriber->getFirstname(),
-              $subscriber->getLastname(),
+              $subscriber->getFirstName(),
+              $subscriber->getLastName(),
               $subscriber->getEmail(),
               $subscriber->getId()
               );
@@ -101,14 +101,14 @@ class dmNewsSubscriberActions extends dmFrontBaseActions
       }
   }
 
-  protected function sendConfirmation($firstname, $lastname, $email, $id) {
+  protected function sendConfirmation($first_name, $last_name, $email, $id) {
       $confirm = '?confirm=' . $id;
 
       $this->getService('mail')
               ->setTemplate('confirm_newsletter_subscription')
               ->addValues(array(
-                  'firstname'   => $firstname,
-                  'lastname'    => $lastname,
+                  'first_name'   => $first_name,
+                  'last_name'    => $last_name,
                   'email'       => $email,
                   'confirm_parameter' => $confirm,
                   'confirm_limit'=> sfConfig::get('app_dmNewsLetterPlugin_wait4ConfirmationHours')

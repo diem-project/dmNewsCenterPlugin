@@ -36,8 +36,8 @@ if ($sf_user->getFlash('subscription_form_valid')) {
     /*echo $form->open('.suscription_form');
 
     echo _tag('ul',
-            _tag('li', $form['firstname']->label()->field()->error()) .
-            _tag('li', $form['lastname']->label()->field()->error()) .
+            _tag('li', $form['first_name']->label()->field()->error()) .
+            _tag('li', $form['last_name']->label()->field()->error()) .
             _tag('li', $form['email']->label()->field()->error())
     );
 

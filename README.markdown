@@ -29,14 +29,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 There are 2 mail templates used in this plugin:
 
 *'confirm_newsletter_subscription' with the following variables:*
-> - %firstname% => firstname of the subscriber
-> - %lastname% => lastname of the subscriber
+> - %first_name% => first_name of the subscriber
+> - %last_name% => last_name of the subscriber
 > - %email% => email address of the subscriber
 > - %confirm_parameter% => the parameter for confirmation link (See 3. Parameters' for more details.)
 > - %confirm_limit% => hours a subscription must be confirmed before subscriber gets deleted from database
 
 *'newsletter' with the following variables:*
-> - %firstname%, %lastname%, %email% => same as above
+> - %first_name%, %last_name%, %email% => same as above
 > - %edit_parameter% => the parameter for editing a subscription already in database (See '3. Parameters' for more details.)
 > - %unsubscribe_parameter% => the parameter for removing a subscription from database (See '3. Parameters' for more details.)
 > - %content_text% => all articles with title and summary relating to the current newsletter and generated absolute url as text

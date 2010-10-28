@@ -1,6 +1,6 @@
 Content:
 
-  News:
+  NewsCenter:
     DmNewsArticle:
       name:         News
       page:         true
