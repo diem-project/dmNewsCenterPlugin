@@ -13,8 +13,6 @@ generator:
       list:
         display:
           - '=title'
-          - image
-          - author
           - summary
           - body
           - is_active
@@ -31,8 +29,6 @@ generator:
       filter:
         display:
           - title
-          - image
-          - author
           - summary
           - body
           - is_active
@@ -42,9 +38,8 @@ generator:
           - updated_at
       form:
         display:
-          NONE: [title, is_active, author, categories_list]
-          Summary: [summary, newsletters_list]
-          Image: [image_form, image_view]
+          NONE: [title, is_active, summary, categories_list]
+          Newsletters: [newsletters_list]
           Body: [body]
         class: DmNewsArticleAdminForm
         fields: {  }
