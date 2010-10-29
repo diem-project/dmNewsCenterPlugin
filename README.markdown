@@ -18,12 +18,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 - Article and Newsletter is many-to-many related
 - Category and Newsletter is many-to-many related
 - Subscriber and Newsletter is many-to-many related
-- Article has DmBlameable and DmGallery behaviour in favor of Author and Image relation
+- Article has DmBlameable, DmGallery and DmVersionable behaviour in favor of Author & Image relation and Archives
 
 ## TODOS
-- Article archive
-- Configurable DmTaggable behaviour for Articles
+- Configurable DmTaggable behaviour for Articles, Categories and Newsletters
 - Configurable NestedSet behaviour for Categories
+- Event driven mail sending
+- Documentation on how to configure mailserver for big message queue's
 
 ## Templates
 There are 2 mail templates used in this plugin:
