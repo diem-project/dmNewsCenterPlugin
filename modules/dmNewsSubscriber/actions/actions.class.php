@@ -7,7 +7,7 @@ class dmNewsSubscriberActions extends dmFrontBaseActions
 
   public function preExecute() {
     
-        $subscribers = DmNewsSubscriberTable::getInstance()->findBy('confirmed', false);
+        $subscribers = DmNewsSubscriberTable::getInstance()->findBy('is_confirmed', false);
         
         if ($subscribers->count() > 0) {
             foreach ($subscribers->getData() as $subscriber) {

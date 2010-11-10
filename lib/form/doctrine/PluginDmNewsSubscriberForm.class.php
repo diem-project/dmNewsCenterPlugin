@@ -20,7 +20,7 @@ abstract class PluginDmNewsSubscriberForm extends BaseDmNewsSubscriberForm {
         $category_query = DmNewsCategoryTable::getInstance()
                 ->createQuery('c')
                 ->withI18n()
-                ->withIsActive(true)
+                ->where('cTranslation.is_active = ?', true)
                 ->andWhere('c.is_registrable = ?', true)
                 ;
 
