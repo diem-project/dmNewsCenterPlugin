@@ -21,6 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 - Article has DmBlameable, DmGallery and DmVersionable behaviour in favor of Author & Image relation and Archives
 
 ## TODOS
+- Refactor subscriber to DmUser
 - Configurable DmTaggable behaviour for Articles, Categories and Newsletters
 - Configurable NestedSet behaviour for Categories
 - Event driven mail sending
